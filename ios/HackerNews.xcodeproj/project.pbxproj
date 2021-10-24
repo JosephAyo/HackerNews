@@ -1,0 +1,693 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* HackerNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HackerNewsTests.m */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		7F0296151D3B4F369015FECB /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D08BFFDB614DF39415B574 /* AntDesign.ttf */; };
+		66FD5E697CDB4F5DAB6CE5EC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99EE2DDDE5DE4F7398BFEA7F /* Entypo.ttf */; };
+		FF69FE2E5298486188DDD6BF /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCFDE4A21A23460986CABA59 /* EvilIcons.ttf */; };
+		1BB5CDDA7E4A4478BCA5CA78 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABC6AF700E524E34872FACB5 /* Feather.ttf */; };
+		F06C66E38FEA42D6A92B73F2 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A13C5E5177149CAA888D27C /* FontAwesome.ttf */; };
+		C017A5610B0548AFB43905CD /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFEA63798A44E52BBBD031E /* FontAwesome5_Brands.ttf */; };
+		36771D55D2EB4E98AD383747 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B466C3A70C4C4A6BBE01B779 /* FontAwesome5_Regular.ttf */; };
+		F110C2DAE05B4C26AAB1A3D1 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E02E6DA32B6242ABBDE3AE50 /* FontAwesome5_Solid.ttf */; };
+		F23F839FEAA341EE82A8AA4F /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C498B7493E864BFE8C5604C8 /* Fontisto.ttf */; };
+		BACDD943A6F345B18714FAD3 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40CA1DC716BB49B3A0C9BF6C /* Foundation.ttf */; };
+		3A614EB0ECC1415992E1063B /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D250D210B70B4D54B62BE63E /* Ionicons.ttf */; };
+		0D58EBD6BA1B426EAD39064A /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 388B194729DF4AF58E3DC054 /* MaterialCommunityIcons.ttf */; };
+		D8D41AF9B68A4AED92FEF83B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37083E20B6874D56A23926B7 /* MaterialIcons.ttf */; };
+		EA0B9ADBCC8C4DC28719E520 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCFB8BFB97904513B9AF63CE /* Octicons.ttf */; };
+		D78B701A5601413E897ADC98 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD22B42E5346F1A5FD0E6F /* SimpleLineIcons.ttf */; };
+		64F06310B5384BCC8FDFD92A /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686493AE2A9F4F9C821E8ED1 /* Zocial.ttf */; };
+		8699A9996B83434B81363261 /* Bozon-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A58B5864D264B8385DB803B /* Bozon-Black.ttf */; };
+		FD6D952BD4734C0FA9CE9BD1 /* Bozon-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20E39FAB40E24F02B98161D3 /* Bozon-BlackItalic.ttf */; };
+		6747019A325745C9AFF8F6BA /* Bozon-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D523B964F8A40DDAA24F750 /* Bozon-Bold.ttf */; };
+		92EE978F5A644FE197B45D94 /* Bozon-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B29EB535905644679BFF6C0A /* Bozon-BoldItalic.ttf */; };
+		F9564925E7DA4EAF9E014B45 /* Bozon-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C30694A952EC4DF9B111FB3A /* Bozon-Book.ttf */; };
+		38013267963A475BB0950B65 /* Bozon-BookItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3CF782C20F14CA3A53EFE0B /* Bozon-BookItalic.ttf */; };
+		184E502CFB82401A8C78EFFA /* Bozon-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F22001AA19147B7BD01DE9C /* Bozon-DemiBold.ttf */; };
+		04623A398A854064B4C15CD6 /* Bozon-DemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A94A6EAE773A4705936C2727 /* Bozon-DemiBoldItalic.ttf */; };
+		A8CB0D816B294E2C9998E756 /* Bozon-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B80654805B4C12B143E4F8 /* Bozon-ExtraBold.ttf */; };
+		7E5C3B2D8EA64DA09F654BF1 /* Bozon-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFC22EDAA8D412A85F617D1 /* Bozon-ExtraBoldItalic.ttf */; };
+		0E5822949BF1426E83447F88 /* Bozon-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53EBDFA9AAA342288DB25B9D /* Bozon-Hairline.ttf */; };
+		023B9ECB478D48109626375A /* Bozon-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5C70B09126A4218AF9D330A /* Bozon-HairlineItalic.ttf */; };
+		CDDEE75C71584C4DB602F0C3 /* Bozon-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E548E25F71AB4C67BB22232E /* Bozon-Light.ttf */; };
+		E9ABE82146F943ABA8ECF1B6 /* Bozon-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9923451F2ED34FCB90806860 /* Bozon-LightItalic.ttf */; };
+		1C535F7057FC4F3C81FFF80D /* Bozon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD60979D1B534461B8C7C2FD /* Bozon-Regular.ttf */; };
+		DB21EBADCBDB4F8BBDE60622 /* Bozon-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F94A57DB22415598645C51 /* Bozon-RegularItalic.ttf */; };
+		F02641ED157F443281EE148E /* Bozon-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 653819B7B8CA487598F8213B /* Bozon-Thin.ttf */; };
+		8B84BE063CF540E1A3D31EF8 /* Bozon-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB57B949D6244DC29D9595D5 /* Bozon-ThinItalic.ttf */; };
+		E6646E89B41246BE95082D4B /* Bozon-UltraThin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D90EF7229D467495ACEBDC /* Bozon-UltraThin.ttf */; };
+		664EE216B554440398FE297D /* Bozon-UltraThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0CF509AEE2A4ED68A3E60D6 /* Bozon-UltraThinItalic.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = HackerNews;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* HackerNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackerNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* HackerNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerNewsTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HackerNews/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = HackerNews/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HackerNews/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HackerNews/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HackerNews/main.m; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HackerNews/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A0D08BFFDB614DF39415B574 /* AntDesign.ttf */ = {isa = PBXFileReference; name = "AntDesign.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		99EE2DDDE5DE4F7398BFEA7F /* Entypo.ttf */ = {isa = PBXFileReference; name = "Entypo.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BCFDE4A21A23460986CABA59 /* EvilIcons.ttf */ = {isa = PBXFileReference; name = "EvilIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ABC6AF700E524E34872FACB5 /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4A13C5E5177149CAA888D27C /* FontAwesome.ttf */ = {isa = PBXFileReference; name = "FontAwesome.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7AFEA63798A44E52BBBD031E /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Brands.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B466C3A70C4C4A6BBE01B779 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Regular.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E02E6DA32B6242ABBDE3AE50 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Solid.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C498B7493E864BFE8C5604C8 /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		40CA1DC716BB49B3A0C9BF6C /* Foundation.ttf */ = {isa = PBXFileReference; name = "Foundation.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D250D210B70B4D54B62BE63E /* Ionicons.ttf */ = {isa = PBXFileReference; name = "Ionicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		388B194729DF4AF58E3DC054 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; name = "MaterialCommunityIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		37083E20B6874D56A23926B7 /* MaterialIcons.ttf */ = {isa = PBXFileReference; name = "MaterialIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BCFB8BFB97904513B9AF63CE /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2CBD22B42E5346F1A5FD0E6F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		686493AE2A9F4F9C821E8ED1 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4A58B5864D264B8385DB803B /* Bozon-Black.ttf */ = {isa = PBXFileReference; name = "Bozon-Black.ttf"; path = "../public/assets/fonts/Bozon-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		20E39FAB40E24F02B98161D3 /* Bozon-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-BlackItalic.ttf"; path = "../public/assets/fonts/Bozon-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6D523B964F8A40DDAA24F750 /* Bozon-Bold.ttf */ = {isa = PBXFileReference; name = "Bozon-Bold.ttf"; path = "../public/assets/fonts/Bozon-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B29EB535905644679BFF6C0A /* Bozon-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-BoldItalic.ttf"; path = "../public/assets/fonts/Bozon-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C30694A952EC4DF9B111FB3A /* Bozon-Book.ttf */ = {isa = PBXFileReference; name = "Bozon-Book.ttf"; path = "../public/assets/fonts/Bozon-Book.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3CF782C20F14CA3A53EFE0B /* Bozon-BookItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-BookItalic.ttf"; path = "../public/assets/fonts/Bozon-BookItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8F22001AA19147B7BD01DE9C /* Bozon-DemiBold.ttf */ = {isa = PBXFileReference; name = "Bozon-DemiBold.ttf"; path = "../public/assets/fonts/Bozon-DemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A94A6EAE773A4705936C2727 /* Bozon-DemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-DemiBoldItalic.ttf"; path = "../public/assets/fonts/Bozon-DemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D7B80654805B4C12B143E4F8 /* Bozon-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Bozon-ExtraBold.ttf"; path = "../public/assets/fonts/Bozon-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6BFC22EDAA8D412A85F617D1 /* Bozon-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-ExtraBoldItalic.ttf"; path = "../public/assets/fonts/Bozon-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		53EBDFA9AAA342288DB25B9D /* Bozon-Hairline.ttf */ = {isa = PBXFileReference; name = "Bozon-Hairline.ttf"; path = "../public/assets/fonts/Bozon-Hairline.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E5C70B09126A4218AF9D330A /* Bozon-HairlineItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-HairlineItalic.ttf"; path = "../public/assets/fonts/Bozon-HairlineItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E548E25F71AB4C67BB22232E /* Bozon-Light.ttf */ = {isa = PBXFileReference; name = "Bozon-Light.ttf"; path = "../public/assets/fonts/Bozon-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9923451F2ED34FCB90806860 /* Bozon-LightItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-LightItalic.ttf"; path = "../public/assets/fonts/Bozon-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD60979D1B534461B8C7C2FD /* Bozon-Regular.ttf */ = {isa = PBXFileReference; name = "Bozon-Regular.ttf"; path = "../public/assets/fonts/Bozon-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		07F94A57DB22415598645C51 /* Bozon-RegularItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-RegularItalic.ttf"; path = "../public/assets/fonts/Bozon-RegularItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		653819B7B8CA487598F8213B /* Bozon-Thin.ttf */ = {isa = PBXFileReference; name = "Bozon-Thin.ttf"; path = "../public/assets/fonts/Bozon-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CB57B949D6244DC29D9595D5 /* Bozon-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-ThinItalic.ttf"; path = "../public/assets/fonts/Bozon-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C8D90EF7229D467495ACEBDC /* Bozon-UltraThin.ttf */ = {isa = PBXFileReference; name = "Bozon-UltraThin.ttf"; path = "../public/assets/fonts/Bozon-UltraThin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D0CF509AEE2A4ED68A3E60D6 /* Bozon-UltraThinItalic.ttf */ = {isa = PBXFileReference; name = "Bozon-UltraThinItalic.ttf"; path = "../public/assets/fonts/Bozon-UltraThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* HackerNewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* HackerNewsTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = HackerNewsTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* HackerNews */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+			);
+			name = HackerNews;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* HackerNews */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* HackerNewsTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				7041D28FAC9E4DF6ABAFF1F7 /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* HackerNews.app */,
+				00E356EE1AD99517003FC87E /* HackerNewsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7041D28FAC9E4DF6ABAFF1F7 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				A0D08BFFDB614DF39415B574 /* AntDesign.ttf */,
+				99EE2DDDE5DE4F7398BFEA7F /* Entypo.ttf */,
+				BCFDE4A21A23460986CABA59 /* EvilIcons.ttf */,
+				ABC6AF700E524E34872FACB5 /* Feather.ttf */,
+				4A13C5E5177149CAA888D27C /* FontAwesome.ttf */,
+				7AFEA63798A44E52BBBD031E /* FontAwesome5_Brands.ttf */,
+				B466C3A70C4C4A6BBE01B779 /* FontAwesome5_Regular.ttf */,
+				E02E6DA32B6242ABBDE3AE50 /* FontAwesome5_Solid.ttf */,
+				C498B7493E864BFE8C5604C8 /* Fontisto.ttf */,
+				40CA1DC716BB49B3A0C9BF6C /* Foundation.ttf */,
+				D250D210B70B4D54B62BE63E /* Ionicons.ttf */,
+				388B194729DF4AF58E3DC054 /* MaterialCommunityIcons.ttf */,
+				37083E20B6874D56A23926B7 /* MaterialIcons.ttf */,
+				BCFB8BFB97904513B9AF63CE /* Octicons.ttf */,
+				2CBD22B42E5346F1A5FD0E6F /* SimpleLineIcons.ttf */,
+				686493AE2A9F4F9C821E8ED1 /* Zocial.ttf */,
+				4A58B5864D264B8385DB803B /* Bozon-Black.ttf */,
+				20E39FAB40E24F02B98161D3 /* Bozon-BlackItalic.ttf */,
+				6D523B964F8A40DDAA24F750 /* Bozon-Bold.ttf */,
+				B29EB535905644679BFF6C0A /* Bozon-BoldItalic.ttf */,
+				C30694A952EC4DF9B111FB3A /* Bozon-Book.ttf */,
+				D3CF782C20F14CA3A53EFE0B /* Bozon-BookItalic.ttf */,
+				8F22001AA19147B7BD01DE9C /* Bozon-DemiBold.ttf */,
+				A94A6EAE773A4705936C2727 /* Bozon-DemiBoldItalic.ttf */,
+				D7B80654805B4C12B143E4F8 /* Bozon-ExtraBold.ttf */,
+				6BFC22EDAA8D412A85F617D1 /* Bozon-ExtraBoldItalic.ttf */,
+				53EBDFA9AAA342288DB25B9D /* Bozon-Hairline.ttf */,
+				E5C70B09126A4218AF9D330A /* Bozon-HairlineItalic.ttf */,
+				E548E25F71AB4C67BB22232E /* Bozon-Light.ttf */,
+				9923451F2ED34FCB90806860 /* Bozon-LightItalic.ttf */,
+				FD60979D1B534461B8C7C2FD /* Bozon-Regular.ttf */,
+				07F94A57DB22415598645C51 /* Bozon-RegularItalic.ttf */,
+				653819B7B8CA487598F8213B /* Bozon-Thin.ttf */,
+				CB57B949D6244DC29D9595D5 /* Bozon-ThinItalic.ttf */,
+				C8D90EF7229D467495ACEBDC /* Bozon-UltraThin.ttf */,
+				D0CF509AEE2A4ED68A3E60D6 /* Bozon-UltraThinItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* HackerNewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HackerNewsTests" */;
+			buildPhases = (
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = HackerNewsTests;
+			productName = HackerNewsTests;
+			productReference = 00E356EE1AD99517003FC87E /* HackerNewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* HackerNews */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HackerNews" */;
+			buildPhases = (
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HackerNews;
+			productName = HackerNews;
+			productReference = 13B07F961A680F5B00A75B9A /* HackerNews.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HackerNews" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* HackerNews */,
+				00E356ED1AD99517003FC87E /* HackerNewsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				7F0296151D3B4F369015FECB /* AntDesign.ttf in Resources */,
+				66FD5E697CDB4F5DAB6CE5EC /* Entypo.ttf in Resources */,
+				FF69FE2E5298486188DDD6BF /* EvilIcons.ttf in Resources */,
+				1BB5CDDA7E4A4478BCA5CA78 /* Feather.ttf in Resources */,
+				F06C66E38FEA42D6A92B73F2 /* FontAwesome.ttf in Resources */,
+				C017A5610B0548AFB43905CD /* FontAwesome5_Brands.ttf in Resources */,
+				36771D55D2EB4E98AD383747 /* FontAwesome5_Regular.ttf in Resources */,
+				F110C2DAE05B4C26AAB1A3D1 /* FontAwesome5_Solid.ttf in Resources */,
+				F23F839FEAA341EE82A8AA4F /* Fontisto.ttf in Resources */,
+				BACDD943A6F345B18714FAD3 /* Foundation.ttf in Resources */,
+				3A614EB0ECC1415992E1063B /* Ionicons.ttf in Resources */,
+				0D58EBD6BA1B426EAD39064A /* MaterialCommunityIcons.ttf in Resources */,
+				D8D41AF9B68A4AED92FEF83B /* MaterialIcons.ttf in Resources */,
+				EA0B9ADBCC8C4DC28719E520 /* Octicons.ttf in Resources */,
+				D78B701A5601413E897ADC98 /* SimpleLineIcons.ttf in Resources */,
+				64F06310B5384BCC8FDFD92A /* Zocial.ttf in Resources */,
+				8699A9996B83434B81363261 /* Bozon-Black.ttf in Resources */,
+				FD6D952BD4734C0FA9CE9BD1 /* Bozon-BlackItalic.ttf in Resources */,
+				6747019A325745C9AFF8F6BA /* Bozon-Bold.ttf in Resources */,
+				92EE978F5A644FE197B45D94 /* Bozon-BoldItalic.ttf in Resources */,
+				F9564925E7DA4EAF9E014B45 /* Bozon-Book.ttf in Resources */,
+				38013267963A475BB0950B65 /* Bozon-BookItalic.ttf in Resources */,
+				184E502CFB82401A8C78EFFA /* Bozon-DemiBold.ttf in Resources */,
+				04623A398A854064B4C15CD6 /* Bozon-DemiBoldItalic.ttf in Resources */,
+				A8CB0D816B294E2C9998E756 /* Bozon-ExtraBold.ttf in Resources */,
+				7E5C3B2D8EA64DA09F654BF1 /* Bozon-ExtraBoldItalic.ttf in Resources */,
+				0E5822949BF1426E83447F88 /* Bozon-Hairline.ttf in Resources */,
+				023B9ECB478D48109626375A /* Bozon-HairlineItalic.ttf in Resources */,
+				CDDEE75C71584C4DB602F0C3 /* Bozon-Light.ttf in Resources */,
+				E9ABE82146F943ABA8ECF1B6 /* Bozon-LightItalic.ttf in Resources */,
+				1C535F7057FC4F3C81FFF80D /* Bozon-Regular.ttf in Resources */,
+				DB21EBADCBDB4F8BBDE60622 /* Bozon-RegularItalic.ttf in Resources */,
+				F02641ED157F443281EE148E /* Bozon-Thin.ttf in Resources */,
+				8B84BE063CF540E1A3D31EF8 /* Bozon-ThinItalic.ttf in Resources */,
+				E6646E89B41246BE95082D4B /* Bozon-UltraThin.ttf in Resources */,
+				664EE216B554440398FE297D /* Bozon-UltraThinItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* HackerNewsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* HackerNews */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HackerNewsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HackerNews.app/HackerNews";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = HackerNewsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HackerNews.app/HackerNews";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = HackerNews/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = HackerNews;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = HackerNews/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = HackerNews;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HackerNewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HackerNews" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HackerNews" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}
