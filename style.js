@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Colors, Dimensions} from '@styles/index';
 const styles = StyleSheet.create({
+  app: {flex: 1},
   container: {
     flex: 1,
     alignItems: 'center',

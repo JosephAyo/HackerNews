@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {Colors, Dimensions} from '@styles/index';
+import {Colors, Dimensions, Fonts} from '@styles/index';
 
 const styles = StyleSheet.create({
   tarBar: {
     backgroundColor: Colors.BACKGROUND,
     justifyContent: 'center',
     padding: 0,
+    fontFamily: Fonts.BOZON_BOLD,
   },
   tabBarItem: {
     marginTop: -8,

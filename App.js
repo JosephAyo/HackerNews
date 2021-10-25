@@ -8,32 +8,25 @@
 
 import React from 'react';
 import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MainAppStack from '@navigation/appNavigator';
 import {Colors} from '@styles/index';
+import styles from './style';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <NavigationContainer>
-      {/* <View> */}
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={Colors.PRIMARY}
-      />
-      {/* <ScrollView contentInsetAdjustmentBehavior="automatic"></ScrollView> */}
-      <MainAppStack />
-      {/* </View> */}
+      <SafeAreaView style={styles.app}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={Colors.PRIMARY}
+        />
+        {/* <ScrollView contentInsetAdjustmentBehavior="automatic"></ScrollView> */}
+        <MainAppStack />
+      </SafeAreaView>
     </NavigationContainer>
   );
 };

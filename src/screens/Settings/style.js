@@ -6,23 +6,47 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BACKGROUND,
     height: Dimensions.HEIGHT,
     paddingHorizontal: 10,
+    alignItems: 'center',
+  },
+  screenContents: {
+    width: Dimensions.WIDTH * 0.93,
+  },
+  section: {
+    marginVertical: 20,
   },
   normalText: {
     color: Colors.NORMAL_TEXT_COLOR,
+    fontFamily: Fonts.BOZON_REGULAR,
   },
-  myProfile: {
+  logoutText: {
+    fontSize: 18,
+    color: Colors.ERROR,
+    marginLeft: 15,
+    fontFamily: Fonts.BOZON_BOLD,
+  },
+  sectionTitle: {
     fontSize: 24,
-    fontWeight: '700',
+    fontFamily: Fonts.BOZON_BOLD,
   },
-  profileCard: {
+  horizontalRule: {
+    borderBottomColor: Colors.FADED,
+    borderBottomWidth: 0.5,
+  },
+  card: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 20,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 6,
     borderColor: Colors.FADED,
     borderWidth: 0.5,
     borderRadius: 10,
+  },
+  logoutCardVariant: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    height: 70,
   },
   profileCardImage: {
     width: 100,
@@ -37,6 +61,9 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.BOZON_REGULAR,
     color: Colors.FADED,
     fontSize: 14,
+  },
+  cardContentTitle: {
+    fontFamily: Fonts.BOZON_BOLD,
   },
   cardReadMore: {
     color: Colors.PRIMARY,

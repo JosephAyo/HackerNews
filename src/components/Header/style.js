@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors, Dimensions} from '@styles/index';
+import {Colors, Dimensions, Fonts} from '@styles/index';
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.BACKGROUND,
-    width: Dimensions.WIDTH * 0.9,
+    width: Dimensions.WIDTH * 0.95,
     borderBottomWidth: 0.5,
     borderBottomColor: Colors.FADED,
     height: Dimensions.HEIGHT * 0.1,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 25,
-    fontWeight: '700',
+    fontFamily: Fonts.BOZON_BOLD,
   },
   textNews: {color: Colors.PRIMARY},
   normalText: {

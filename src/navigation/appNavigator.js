@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Authentication from '@screens/Authentication/Authentication';
-
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Feed from '@screens/Feed/Feed';
 import Settings from '@screens/Settings/Settings';

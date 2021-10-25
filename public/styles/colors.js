@@ -27,7 +27,9 @@ export const ERROR = '#FF1A1A';
 export const ALERT = '#cc4b37';
 export const FADED = '#BEBEBE';
 
-const mode = 'light';
+const mode = 'dark';
 export const BACKGROUND = mode === 'dark' ? DARK_BACKGROUND : LIGHT_BACKGROUND;
 export const NORMAL_TEXT_COLOR =
   mode === 'dark' ? DARK_NORMAL_TEXT : LIGHT_NORMAL_TEXT;
+export const NORMAL_TEXT_COLOR_REVERSED =
+  mode !== 'dark' ? DARK_NORMAL_TEXT : LIGHT_NORMAL_TEXT;
