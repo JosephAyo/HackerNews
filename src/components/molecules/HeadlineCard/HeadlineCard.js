@@ -8,14 +8,14 @@ import {TouchableRipple} from 'react-native-paper';
 
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
-const HeadlineCard = ({title, by, time, navigation}) => {
+const HeadlineCard = ({title, by, time, navigation, url}) => {
   const [state, setState] = useState({
     isLoading: false,
   });
   return (
     <TouchableRipple
       rippleColor={'#0076b66b'}
-      onPress={() => navigation.navigate('Auth')}
+      onPress={() => navigation.navigate('NewsStory', {url})}
       style={styles.headlineCard}>
       <Fragment>
         <View style={styles.headlineTitle}>

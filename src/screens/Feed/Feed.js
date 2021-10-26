@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '@components/Header/Header';
+import Header from '@molecules/Header/Header';
 import {View, Text, FlatList} from 'react-native';
 import styles from './style';
-import HeadlineCard from '@components/HeadlineCard/HeadlineCard';
+import HeadlineCard from '@molecules/HeadlineCard/HeadlineCard';
 import topstories from '@assets/dummy_data/topstories.json';
 const Feed = ({navigation}) => {
   const renderItem = ({item}) => (
@@ -10,6 +10,7 @@ const Feed = ({navigation}) => {
       title={item.title}
       by={item.by}
       time={item.time}
+      url={item.url}
       navigation={navigation}
     />
   );

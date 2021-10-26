@@ -1,5 +1,5 @@
 import LogoutIcon from '@assets/icons/logout';
-import Header from '@components/Header/Header';
+import Header from '@molecules/Header/Header';
 import React from 'react';
 import {Fragment} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
@@ -9,7 +9,10 @@ const Settings = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Header />
-      <ScrollView style={styles.screenContents}>
+      <ScrollView
+        style={styles.screenContents}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}>
         <View style={styles.section}>
           <Text style={[styles.normalText, styles.sectionTitle]}>Account</Text>
           <TouchableRipple

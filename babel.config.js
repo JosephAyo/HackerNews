@@ -18,7 +18,9 @@ module.exports = {
         ],
         alias: {
           '@navigation': './src/navigation',
-          '@components': './src/components',
+          '@atoms': './src/components/atoms',
+          '@molecules': './src/components/molecules',
+          '@organisms': './src/components/organisms',
           '@screens': './src/screens',
           '@assets': './public/assets',
           '@styles': './public/styles',

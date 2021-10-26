@@ -10,6 +10,7 @@ import {Colors} from '@styles/index';
 import {View} from 'react-native';
 import styles from './style';
 import About from '@screens/About/About';
+import NewsStory from '@screens/NewsStory/NewsStory';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -71,6 +72,7 @@ function MainAppStack() {
       <Stack.Screen name="Auth" component={Authentication} />
       <Stack.Screen name="HackerNews" component={MyTabs} />
       <Stack.Screen name="About" component={About} />
+      <Stack.Screen name="NewsStory" component={NewsStory} />
     </Stack.Navigator>
   );
 }

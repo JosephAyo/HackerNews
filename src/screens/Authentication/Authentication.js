@@ -1,5 +1,5 @@
 import {EyeOffIcon, EyeOnIcon} from '@assets/icons/eyes';
-import Header from '@components/Header/Header';
+import Header from '@molecules/Header/Header';
 import {Colors} from '@styles/index';
 import React, {useState} from 'react';
 import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
