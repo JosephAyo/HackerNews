@@ -5,17 +5,23 @@ import {Fragment} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
 import styles from './style';
+import generalStyles from '@styles/generalStyles';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {getTheme, switchTheme} from '@redux/actions/themes';
 
-const About = ({navigation}) => {
+const About = ({navigation, mode}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, generalStyles(mode).background]}>
       <Header />
       <ScrollView
         style={styles.screenContents}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
         <View style={styles.section}>
-          <Text style={[styles.normalText, styles.sectionTitle]}>About</Text>
+          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+            About
+          </Text>
         </View>
         <View style={styles.profileImageContainer}>
           <Image
@@ -27,19 +33,31 @@ const About = ({navigation}) => {
         </View>
         <View style={styles.section}>
           <View style={styles.subsection}>
-            <Text style={[styles.normalText, styles.subsectionTitle]}>
+            <Text
+              style={[generalStyles(mode).normalText, styles.subsectionTitle]}>
               Ayobami Joseph
             </Text>
             <View style={styles.sectionParagraphContainer}>
-              <Text style={styles.sectionParagraphText}>
+              <Text
+                style={[
+                  generalStyles(mode).normalText,
+                  styles.sectionParagraphText,
+                ]}>
                 Full stack Developer
               </Text>
             </View>
           </View>
           <View style={styles.subsection}>
-            <Text style={[styles.normalText, styles.subsectionTitle]}>Bio</Text>
+            <Text
+              style={[generalStyles(mode).normalText, styles.subsectionTitle]}>
+              Bio
+            </Text>
             <View style={styles.sectionParagraphContainer}>
-              <Text style={styles.sectionParagraphText}>
+              <Text
+                style={[
+                  generalStyles(mode).normalText,
+                  styles.sectionParagraphText,
+                ]}>
                 The definition of biography is a story written about someone's
                 life. An example of biography is a book about the story of
                 President Obama's life. ... An account of a person's life
@@ -49,11 +67,16 @@ const About = ({navigation}) => {
             </View>
           </View>
           <View style={styles.subsection}>
-            <Text style={[styles.normalText, styles.subsectionTitle]}>
+            <Text
+              style={[generalStyles(mode).normalText, styles.subsectionTitle]}>
               Experience
             </Text>
             <View style={styles.sectionParagraphContainer}>
-              <Text style={styles.sectionParagraphText}>
+              <Text
+                style={[
+                  generalStyles(mode).normalText,
+                  styles.sectionParagraphText,
+                ]}>
                 E-Agric (Software engineering coursework project) Android
                 application that provides relevant Agric-related news and
                 weather updates.{'\n'}
@@ -69,4 +92,12 @@ const About = ({navigation}) => {
   );
 };
 
-export default About;
+const mapStateToProps = state => ({
+  mode: state.themesReducer.mode,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);

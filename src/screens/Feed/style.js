@@ -3,7 +3,7 @@ import {Colors, Dimensions, Fonts} from '@styles/index';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.BACKGROUND,
+    // backgroundColor: Colors.BACKGROUND,
     height: Dimensions.HEIGHT,
     paddingHorizontal: 10,
     alignItems: 'center',

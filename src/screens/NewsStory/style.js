@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: Colors.BACKGROUND,
   },
   top_content: {
     flex: 1,
@@ -15,6 +14,11 @@ const styles = StyleSheet.create({
   main_article_webview: {
     width: Dimensions.WIDTH,
     resizeMode: 'cover',
+  },
+  articleLoadingIndicator: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

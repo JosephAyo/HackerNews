@@ -3,9 +3,13 @@ import Header from '@molecules/Header/Header';
 import {Colors} from '@styles/index';
 import React, {useState} from 'react';
 import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
-import {Button, TextInput, TouchableRipple} from 'react-native-paper';
+import {TextInput, TouchableRipple} from 'react-native-paper';
 import styles from './style';
-const Authentication = ({navigation}) => {
+import generalStyles from '@styles/generalStyles';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {getTheme, switchTheme} from '@redux/actions/themes';
+const Authentication = ({navigation, mode}) => {
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
   const [text3, setText3] = useState('');
@@ -27,14 +31,16 @@ const Authentication = ({navigation}) => {
     handleTabSwitch(targetTab);
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, generalStyles(mode).background]}>
       <Header />
       <ScrollView
         style={styles.screenContents}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}>
         <View style={styles.section}>
-          <Text style={[styles.normalText, styles.sectionTitle]}>Account</Text>
+          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+            Account
+          </Text>
         </View>
         <View style={styles.authTabMenu}>
           <TouchableRipple
@@ -84,11 +90,11 @@ const Authentication = ({navigation}) => {
               colors: {
                 primary: Colors.PRIMARY,
                 underlineColor: Colors.BACKGROUND,
-                text: Colors.NORMAL_TEXT_COLOR,
+                text: generalStyles(mode).normalText.color,
                 placeholder: Colors.FADED,
               },
             }}
-            style={styles.textInput}
+            style={[styles.textInput, generalStyles(mode).background]}
           />
         </View>
         <View style={[styles.section, styles.textInputContainer]}>
@@ -103,11 +109,11 @@ const Authentication = ({navigation}) => {
               colors: {
                 primary: Colors.PRIMARY,
                 underlineColor: Colors.BACKGROUND,
-                text: Colors.NORMAL_TEXT_COLOR,
+                text: generalStyles(mode).normalText.color,
                 placeholder: Colors.FADED,
               },
             }}
-            style={styles.textInput}
+            style={[styles.textInput, generalStyles(mode).background]}
             right={<TextInput.Affix />}
           />
           <TouchableOpacity
@@ -140,11 +146,11 @@ const Authentication = ({navigation}) => {
                 colors: {
                   primary: Colors.PRIMARY,
                   underlineColor: Colors.BACKGROUND,
-                  text: Colors.NORMAL_TEXT_COLOR,
+                  text: generalStyles(mode).normalText.color,
                   placeholder: Colors.FADED,
                 },
               }}
-              style={styles.textInput}
+              style={[styles.textInput, generalStyles(mode).background]}
               right={<TextInput.Affix />}
             />
           </View>
@@ -160,7 +166,8 @@ const Authentication = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={[styles.section, styles.otherOptions]}>
-          <Text style={[styles.normalText, styles.otherOptionsText]}>
+          <Text
+            style={[generalStyles(mode).normalText, styles.otherOptionsText]}>
             {activeTab === 'login'
               ? "Don't have an account? "
               : 'Already registered? '}
@@ -168,12 +175,7 @@ const Authentication = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => handleTabLinkPress()}>
-            <Text
-              style={[
-                styles.normalText,
-                styles.otherOptionsText,
-                styles.tabLinkText,
-              ]}>
+            <Text style={[styles.otherOptionsText, styles.tabLinkText]}>
               {activeTab === 'login' ? 'Sign Up' : 'Log In'}
             </Text>
           </TouchableOpacity>
@@ -182,5 +184,12 @@ const Authentication = ({navigation}) => {
     </View>
   );
 };
+const mapStateToProps = state => ({
+  mode: state.themesReducer.mode,
+});
 
-export default Authentication;
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication);

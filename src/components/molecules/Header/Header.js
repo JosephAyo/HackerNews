@@ -1,35 +1,25 @@
 import AppIcon from '@assets/icons/appIcon';
-import FeedIcon from '@assets/icons/feed';
-import {
-  DarkModeToggleIcon,
-  LightModeToggleIcon,
-  ThemeIcon,
-} from '@assets/icons/toggles';
-import {updateTheme} from '@helpers/theme';
-import React, {useState} from 'react';
+import {DarkModeToggleIcon, LightModeToggleIcon} from '@assets/icons/toggles';
+import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
-
-const Header = () => {
-  const [state, setState] = useState({
-    isDarkMode: false,
-    theme: 'light',
-  });
-
+import generalStyles from '@styles/generalStyles';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {getTheme, switchTheme} from '@redux/actions/themes';
+const Header = ({mode, actions}) => {
   const themeToggleHandler = () => {
-    // const toWhat = state.isDarkMode ? 'light' : 'dark';
-    // const theUp = updateTheme(toWhat);
-    setState({...state, isDarkMode: !state.isDarkMode});
+    actions.switchTheme(mode === 'light' ? 'dark' : 'light');
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, generalStyles(mode).background]}>
       <View style={styles.titleAndLogo}>
         <AppIcon />
         <View style={styles.title}>
-          <Text style={[styles.normalText, styles.titleText]}>Hacker</Text>
-          <Text style={[styles.normalText, styles.titleText, styles.textNews]}>
-            News
+          <Text style={[generalStyles(mode).normalText, styles.titleText]}>
+            Hacker
           </Text>
+          <Text style={[styles.titleText, styles.textNews]}>News</Text>
         </View>
       </View>
       <TouchableOpacity
@@ -37,10 +27,17 @@ const Header = () => {
         activeOpacity={0.6}
         onPress={() => themeToggleHandler()}>
         {/* <ThemeIcon /> */}
-        {state.isDarkMode ? <DarkModeToggleIcon /> : <LightModeToggleIcon />}
+        {mode === 'light' ? <LightModeToggleIcon /> : <DarkModeToggleIcon />}
       </TouchableOpacity>
     </View>
   );
 };
+const mapStateToProps = state => ({
+  mode: state.themesReducer.mode,
+});
 
-export default Header;
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

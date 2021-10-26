@@ -4,7 +4,9 @@ import {Colors} from '@styles/index';
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Linking} from 'react-native';
 import {ProgressBar, Menu, Portal, Modal} from 'react-native-paper';
+import Clipboard from '@react-native-clipboard/clipboard';
 import styles from './style';
+import generalStyles from '@styles/generalStyles';
 
 const WebViewHeader = ({
   isLoading,
@@ -27,9 +29,14 @@ const WebViewHeader = ({
     setState({...state, menuVisible: false});
     refresh();
   };
+
+  const copyLinkHandler = () => {
+    Clipboard.setString(url);
+  };
+
   return (
     <View>
-      <View style={styles.container}>
+      <View style={[styles.container]}>
         <TouchableOpacity
           activeOpacity={0.6}
           onPress={() => closeWebViewHandler()}>
@@ -60,7 +67,9 @@ const WebViewHeader = ({
             />
             <Menu.Item
               icon="content-copy"
-              onPress={() => {}}
+              onPress={() => {
+                copyLinkHandler();
+              }}
               title="Copy link"
             />
             <Menu.Item

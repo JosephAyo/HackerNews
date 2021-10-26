@@ -5,23 +5,29 @@ import {Fragment} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
 import styles from './style';
-const Settings = ({navigation}) => {
+import generalStyles from '@styles/generalStyles';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {getTheme, switchTheme} from '@redux/actions/themes';
+const Settings = ({navigation, mode, mma}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, generalStyles(mode).background]}>
       <Header />
       <ScrollView
         style={styles.screenContents}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
         <View style={styles.section}>
-          <Text style={[styles.normalText, styles.sectionTitle]}>Account</Text>
+          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+            Account
+          </Text>
           <TouchableRipple
             rippleColor={'#0076b66b'}
             onPress={() => navigation.navigate('Auth')}
             style={[styles.card, styles.logoutCardVariant]}>
             <Fragment>
               <LogoutIcon />
-              <Text style={[styles.normalText, styles.logoutText]}>
+              <Text style={[generalStyles(mode).normalText, styles.logoutText]}>
                 Log Out
               </Text>
             </Fragment>
@@ -29,7 +35,7 @@ const Settings = ({navigation}) => {
         </View>
         <View style={styles.horizontalRule} />
         <View style={styles.section}>
-          <Text style={[styles.normalText, styles.sectionTitle]}>
+          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
             Developer Info
           </Text>
           <TouchableRipple
@@ -44,17 +50,25 @@ const Settings = ({navigation}) => {
                 }}
               />
               <View style={[styles.profileCardContent]}>
-                <Text style={[styles.normalText, styles.cardContentTitle]}>
+                <Text
+                  style={[
+                    generalStyles(mode).normalText,
+                    styles.cardContentTitle,
+                  ]}>
                   About Ayo Joseph
                 </Text>
-                <Text style={[styles.normalText, styles.cardContentParagraph]}>
+                <Text
+                  style={[
+                    generalStyles(mode).normalText,
+                    styles.cardContentParagraph,
+                  ]}>
                   React Native || React || NodeJS || TypeScript || PostgreSQL ||
                   MongoDB
                 </Text>
                 <View>
                   <Text
                     style={[
-                      styles.normalText,
+                      generalStyles(mode).normalText,
                       styles.cardContentParagraph,
                       styles.cardReadMore,
                     ]}>
@@ -70,4 +84,12 @@ const Settings = ({navigation}) => {
   );
 };
 
-export default Settings;
+const mapStateToProps = state => ({
+  mode: state.themesReducer.mode,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

@@ -22,6 +22,7 @@ module.exports = {
           '@molecules': './src/components/molecules',
           '@organisms': './src/components/organisms',
           '@screens': './src/screens',
+          '@redux': './src/redux',
           '@assets': './public/assets',
           '@styles': './public/styles',
           '@helpers': './helpers',

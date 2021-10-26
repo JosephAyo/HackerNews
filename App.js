@@ -13,6 +13,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainAppStack from '@navigation/appNavigator';
 import {Colors} from '@styles/index';
 import styles from './style';
+import generalStyles from '@styles/generalStyles';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';

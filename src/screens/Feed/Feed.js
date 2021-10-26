@@ -1,10 +1,14 @@
 import React from 'react';
 import Header from '@molecules/Header/Header';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import styles from './style';
+import generalStyles from '@styles/generalStyles';
 import HeadlineCard from '@molecules/HeadlineCard/HeadlineCard';
 import topstories from '@assets/dummy_data/topstories.json';
-const Feed = ({navigation}) => {
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {getTheme, switchTheme} from '@redux/actions/themes';
+const Feed = ({navigation, mode, actions}) => {
   const renderItem = ({item}) => (
     <HeadlineCard
       title={item.title}
@@ -12,17 +16,24 @@ const Feed = ({navigation}) => {
       time={item.time}
       url={item.url}
       navigation={navigation}
+      mode={mode}
     />
   );
+
+  const handler = () => {
+    // console.log(`mode`, mode);
+  };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, generalStyles(mode).background]}>
       <Header />
       <View style={styles.screenContents}>
-        <View style={styles.section}>
-          <Text style={[styles.normalText, styles.sectionTitle]}>
-            Headlines
-          </Text>
-        </View>
+        <TouchableOpacity onPress={() => handler()}>
+          <View style={styles.section}>
+            <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+              Headlines
+            </Text>
+          </View>
+        </TouchableOpacity>
         <FlatList
           data={topstories}
           renderItem={renderItem}
@@ -40,4 +51,12 @@ const Feed = ({navigation}) => {
   );
 };
 
-export default Feed;
+const mapStateToProps = state => ({
+  mode: state.themesReducer.mode,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);

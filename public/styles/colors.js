@@ -28,6 +28,7 @@ export const ALERT = '#cc4b37';
 export const FADED = '#BEBEBE';
 
 const mode = 'light';
+//  'dark';
 export const BACKGROUND = mode === 'dark' ? DARK_BACKGROUND : LIGHT_BACKGROUND;
 export const NORMAL_TEXT_COLOR =
   mode === 'dark' ? DARK_NORMAL_TEXT : LIGHT_NORMAL_TEXT;

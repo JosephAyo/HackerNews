@@ -1,9 +1,11 @@
 import React, {useState, useRef} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import styles from './style';
+import generalStyles from '@styles/generalStyles';
 import {WebView} from 'react-native-webview';
 import WebViewHeader from '@molecules/WebViewHeader/WebViewHeader';
-import {Provider} from 'react-native-paper';
+import {ActivityIndicator, Provider} from 'react-native-paper';
+import {Dimensions, Colors} from '@styles/index';
 
 // import Header from '../../components/molecules/Header/Header';
 // import Loading from '../../components/atoms/Loading/Loading';
@@ -32,8 +34,9 @@ const NewsStory = ({route, navigation}) => {
       url: nativeEvent.url,
     });
   };
+  console.log('mdde :>> ', route.params.mode);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Provider>
         <WebViewHeader
           progress={state.progress}
@@ -42,10 +45,13 @@ const NewsStory = ({route, navigation}) => {
           url={state.url}
           refresh={webViewRef.current?.reload}
         />
-        <View style={styles.top_content}>
+        <View style={[styles.top_content]}>
           <WebView
             ref={ref => (webViewRef.current = ref)}
-            style={styles.main_article_webview}
+            style={[
+              styles.main_article_webview,
+              // generalStyles(route.params.mode).background,
+            ]}
             originWhitelist={['*']}
             source={{
               uri: route.params.url,
@@ -57,6 +63,15 @@ const NewsStory = ({route, navigation}) => {
             // onError={event => errorHandler(event)}
           />
           {/* <ErrorToast setRef={toast => (errorToastRef.current = toast)} /> */}
+          {state.progress < 0.5 && (
+            <View
+              style={[
+                styles.articleLoadingIndicator,
+                generalStyles(route.params.mode).background,
+              ]}>
+              <ActivityIndicator color={Colors.PRIMARY} size={50} />
+            </View>
+          )}
         </View>
       </Provider>
     </View>

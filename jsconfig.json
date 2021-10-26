@@ -9,7 +9,8 @@
       "@screens/*": ["./src/screens/*"],
       "@assets/*": ["./public/assets/*"],
       "@styles/*": ["./public/styles/*"],
-      "@helpers/*": ["./helpers/*"]
+      "@helpers/*": ["./helpers/*"],
+      "@redux/*": ["./src/redux/*"]
     }
   },
   "exclude": ["node_modules", "dist"]
