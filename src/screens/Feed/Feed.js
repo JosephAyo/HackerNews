@@ -1,51 +1,75 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Header from '@molecules/Header/Header';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
 import HeadlineCard from '@molecules/HeadlineCard/HeadlineCard';
 import topstories from '@assets/dummy_data/topstories.json';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
-const Feed = ({navigation, mode, actions}) => {
+import {fetchAll, fetchMore} from '@redux/actions/newstories';
+import {Colors} from '@styles/index';
+import Toast from 'react-native-toast-message';
+
+const Feed = ({navigation, mode, newstories, actions}) => {
+  const [state, setState] = useState(topstories);
+  const initFetchCallback = useCallback(async () => {
+    await actions.fetchAll();
+  }, [actions]);
+
+  useEffect(() => {
+    initFetchCallback();
+  }, [initFetchCallback]);
+
+  useEffect(() => {
+    if (newstories.hasError) {
+      Toast.show({
+        type: 'error',
+        text1: 'Errors',
+        text2: newstories.message,
+      });
+    }
+  }, [newstories]);
   const renderItem = ({item}) => (
     <HeadlineCard
-      title={item.title}
-      by={item.by}
-      time={item.time}
-      url={item.url}
+      // title={item.title}
+      // by={item.by}
+      // time={item.time}
+      // url={item.url}
       navigation={navigation}
-      mode={mode}
+      item={item}
+      // mode={mode}
     />
   );
 
-  const handler = () => {
-    // console.log(`mode`, mode);
+  const endReachedHandler = async () => {
+    console.log('hit');
+    const {allStories, currentCount} = newstories;
+    await actions.fetchMore({allStories, currentCount});
   };
   return (
     <View style={[styles.container, generalStyles(mode).background]}>
       <Header />
       <View style={styles.screenContents}>
-        <TouchableOpacity onPress={() => handler()}>
-          <View style={styles.section}>
-            <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
-              Headlines
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <FlatList
-          data={topstories}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          contentContainerStyle={styles.contentContainer}
-          onEndReached={({distanceFromEnd}) =>
-            console.log('end reached', distanceFromEnd)
-          }
-          onEndReachedThreshold={0.1}
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-        />
+        <View style={styles.section}>
+          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+            Headlines
+          </Text>
+        </View>
+        {newstories.allStories.length > 0 ? (
+          <FlatList
+            data={newstories.loadedStories}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index}
+            contentContainerStyle={styles.contentContainer}
+            onEndReached={({distanceFromEnd}) => endReachedHandler()}
+            onEndReachedThreshold={0.1}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+          />
+        ) : (
+          <ActivityIndicator color={Colors.PRIMARY} size={50} />
+        )}
       </View>
     </View>
   );
@@ -53,10 +77,17 @@ const Feed = ({navigation, mode, actions}) => {
 
 const mapStateToProps = state => ({
   mode: state.themesReducer.mode,
+  newstories: state.newstoriesReducer,
 });
+const mapDispatchToProps = dispatch => {
+  const actions = {
+    switchTheme: () => dispatch(switchTheme),
+    getTheme: () => dispatch(getTheme),
+    fetchAll: data => dispatch(fetchAll(data)),
+    fetchMore: data => dispatch(fetchMore(data)),
+  };
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
-});
+  return {actions};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);

@@ -32,7 +32,7 @@ const Authentication = ({navigation, mode, user, actions}) => {
       Toast.show({
         type: 'error',
         text1: 'Error',
-        text2: user.message,
+        text2: user.message || '',
       });
     }
   }, [user]);

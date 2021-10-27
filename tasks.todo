@@ -1,8 +1,10 @@
-☐ implement login screen with react native paper
+✔ implement login screen with react native paper @done (27/10/2021, 05:47:34)
 ☐ move reused styles to general styles
     ☐ sectionTitle
-    ☐ container
-    ☐ normalText
+    ✔ container @done (27/10/2021, 05:47:26)
+    ✔ normalText @done (27/10/2021, 05:47:28)
     ☐ screenContents
     ☐ horizontalRule
 ☐ fix see password btn
+☐ network error
+☐ loading modal

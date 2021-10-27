@@ -44,7 +44,7 @@ export const signUp = data => {
       console.log('error sign up :>> ', error);
       dispatch({
         type: SIGN_UP_FAILED,
-        payload: {message: error},
+        payload: {message: error.message ? error.message : error},
       });
     }
   };
@@ -87,7 +87,7 @@ export const signIn = data => {
       console.log('error :>> ', error);
       dispatch({
         type: SIGN_IN_FAILED,
-        payload: {message: error},
+        payload: {message: error.message ? error.message : error},
       });
       return null;
     }
@@ -120,7 +120,7 @@ export const signOut = data => {
       console.log('error :>> ', error);
       dispatch({
         type: SIGN_OUT_FAILED,
-        payload: {message: error},
+        payload: {message: error.message ? error.message : error},
       });
       return null;
     }
