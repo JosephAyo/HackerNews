@@ -26,6 +26,7 @@ module.exports = {
           '@assets': './public/assets',
           '@styles': './public/styles',
           '@helpers': './helpers',
+          '@database': './src/database',
         },
       },
     ],

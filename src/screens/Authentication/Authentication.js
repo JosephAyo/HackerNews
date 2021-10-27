@@ -1,27 +1,57 @@
 import {EyeOffIcon, EyeOnIcon} from '@assets/icons/eyes';
 import Header from '@molecules/Header/Header';
 import {Colors} from '@styles/index';
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {TextInput, TouchableRipple} from 'react-native-paper';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
-const Authentication = ({navigation, mode}) => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
-  const [text3, setText3] = useState('');
+import {createTable, getDBConnection} from '@database/queries';
+import {signIn, signUp} from '@redux/actions/user';
+import Toast from 'react-native-toast-message';
+
+const defaultInputState = {
+  username: '',
+  password: '',
+  confirmedPassword: '',
+};
+const Authentication = ({navigation, mode, user, actions}) => {
+  const initDatabaseCallback = useCallback(async () => {
+    const db = await getDBConnection();
+    await createTable(db);
+  }, []);
+
+  useEffect(() => {
+    initDatabaseCallback();
+  }, [initDatabaseCallback]);
+
+  useEffect(() => {
+    if (user.hasError) {
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: user.message,
+      });
+    }
+  }, [user]);
+
+  const [textInputs, setTextInputs] = useState(defaultInputState);
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [confirmedPassword, setConfirmedPassword] = useState('');
   const [activeTab, setActiveTab] = useState('login');
   const [passHidden, setPassHidden] = useState({
     main: true,
     confirm: true,
   });
 
+  const resetStatesToDefault = () => {
+    setTextInputs(defaultInputState);
+  };
   const handleTabSwitch = target => {
-    setText2('');
-    setText3('');
+    setTextInputs({...textInputs, password: '', confirmedPassword: ''});
     setPassHidden({...passHidden, main: true, confirm: true});
     setActiveTab(target);
   };
@@ -29,6 +59,71 @@ const Authentication = ({navigation, mode}) => {
   const handleTabLinkPress = () => {
     const targetTab = activeTab === 'login' ? 'signup' : 'login';
     handleTabSwitch(targetTab);
+  };
+
+  const handleSubmit = async () => {
+    const {username, password, confirmedPassword} = textInputs;
+    const usernameLengthValid = username.length > 1 && username.length <= 20;
+    const passwordLengthValid = password.length > 5;
+    const confirmedPasswordLengthValid = confirmedPassword.length > 5;
+
+    let isSuccess;
+    if (!usernameLengthValid) {
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'Username must be 2 to 20 characters',
+      });
+      return false;
+    }
+    if (password.length < 1) {
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'Password field is required.',
+      });
+      return false;
+    }
+    if (activeTab === 'signup') {
+      if (!passwordLengthValid || !confirmedPasswordLengthValid) {
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          text2: 'Password must be at least 6 characters long.',
+        });
+        return false;
+      }
+      if (password !== confirmedPassword) {
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          text2: 'Password and Confirm Password must match',
+        });
+        return false;
+      }
+    }
+    if (activeTab === 'login') {
+      isSuccess = await actions.signIn({username, password});
+    } else {
+      isSuccess = await actions.signUp({
+        username,
+        password,
+      });
+    }
+    if (isSuccess) {
+      resetStatesToDefault();
+      navigation.navigate('HackerNews');
+    }
+    if (isSuccess) {
+      Toast.show({
+        type: 'success',
+        text1: `Welcome, ${username}`,
+        text2: 'This is your news feed 👋',
+      });
+      navigation.navigate('HackerNews');
+      return;
+    }
+    return false;
   };
   return (
     <View style={[styles.container, generalStyles(mode).background]}>
@@ -82,8 +177,13 @@ const Authentication = ({navigation, mode}) => {
           <TextInput
             mode="outlined"
             label="Username"
-            value={text1}
-            onChangeText={text => setText1(text)}
+            value={textInputs.username}
+            onChangeText={text =>
+              setTextInputs({
+                ...textInputs,
+                username: text,
+              })
+            }
             outlineColor={Colors.FADED}
             right={<TextInput.Affix text="/20" />}
             theme={{
@@ -101,8 +201,13 @@ const Authentication = ({navigation, mode}) => {
           <TextInput
             mode="outlined"
             label="Password"
-            value={text2}
-            onChangeText={text => setText2(text)}
+            value={textInputs.password}
+            onChangeText={text =>
+              setTextInputs({
+                ...textInputs,
+                password: text,
+              })
+            }
             outlineColor={Colors.FADED}
             secureTextEntry={passHidden.main}
             theme={{
@@ -138,8 +243,13 @@ const Authentication = ({navigation, mode}) => {
             <TextInput
               mode="outlined"
               label="Confirm Password"
-              value={text3}
-              onChangeText={text => setText3(text)}
+              value={textInputs.confirmedPassword}
+              onChangeText={text =>
+                setTextInputs({
+                  ...textInputs,
+                  confirmedPassword: text,
+                })
+              }
               outlineColor={Colors.FADED}
               secureTextEntry={passHidden.confirm}
               theme={{
@@ -159,7 +269,7 @@ const Authentication = ({navigation, mode}) => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.authButton}
-            onPress={() => navigation.navigate('HackerNews')}>
+            onPress={() => handleSubmit()}>
             <Text style={styles.authButtonText}>
               {activeTab === 'login' ? 'Log In' : 'Sign Up'}
             </Text>
@@ -186,10 +296,18 @@ const Authentication = ({navigation, mode}) => {
 };
 const mapStateToProps = state => ({
   mode: state.themesReducer.mode,
+  user: state.userReducer,
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
-});
+const mapDispatchToProps = dispatch => {
+  const actions = {
+    switchTheme: () => dispatch(switchTheme),
+    getTheme: () => dispatch(getTheme),
+    signIn: data => dispatch(signIn(data)),
+    signUp: data => dispatch(signUp(data)),
+  };
+
+  return {actions};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authentication);

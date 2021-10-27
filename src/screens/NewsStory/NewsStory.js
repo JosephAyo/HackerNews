@@ -1,11 +1,11 @@
 import React, {useState, useRef} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
 import {WebView} from 'react-native-webview';
 import WebViewHeader from '@molecules/WebViewHeader/WebViewHeader';
 import {ActivityIndicator, Provider} from 'react-native-paper';
-import {Dimensions, Colors} from '@styles/index';
+import {Colors} from '@styles/index';
 
 // import Header from '../../components/molecules/Header/Header';
 // import Loading from '../../components/atoms/Loading/Loading';

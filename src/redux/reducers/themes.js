@@ -1,4 +1,4 @@
-const {SWITCH_THEME, GET_THEME} = require('@redux/constants/themes');
+const {SWITCH_THEME} = require('@redux/constants/themes');
 
 const initialState = {
   mode: 'light',

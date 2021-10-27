@@ -4,7 +4,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
 const Header = ({mode, actions}) => {
@@ -36,8 +35,13 @@ const mapStateToProps = state => ({
   mode: state.themesReducer.mode,
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
-});
+const mapDispatchToProps = dispatch => {
+  const actions = {
+    switchTheme: mode => dispatch(switchTheme(mode)),
+    getTheme: () => dispatch(getTheme()),
+  };
+
+  return {actions};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -10,7 +10,8 @@
       "@assets/*": ["./public/assets/*"],
       "@styles/*": ["./public/styles/*"],
       "@helpers/*": ["./helpers/*"],
-      "@redux/*": ["./src/redux/*"]
+      "@redux/*": ["./src/redux/*"],
+      "@database/*": ["./src/database/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

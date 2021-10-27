@@ -13,7 +13,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainAppStack from '@navigation/appNavigator';
 import {Colors} from '@styles/index';
 import styles from './style';
-import generalStyles from '@styles/generalStyles';
+import {connect} from 'react-redux';
+import Toast from 'react-native-toast-message';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,8 +26,14 @@ const App: () => Node = () => {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={Colors.PRIMARY}
         />
+
         {/* <ScrollView contentInsetAdjustmentBehavior="automatic"></ScrollView> */}
         <MainAppStack />
+        <Toast
+          ref={ref => Toast.setRef(ref)}
+          topOffset={80}
+          visibilityTime={2000}
+        />
       </SafeAreaView>
     </NavigationContainer>
   );

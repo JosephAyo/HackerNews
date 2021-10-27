@@ -6,10 +6,16 @@ import {View, Text, Image, ScrollView} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
-const Settings = ({navigation, mode, mma}) => {
+import {signOut} from '@redux/actions/user';
+
+const Settings = ({navigation, mode, user, actions}) => {
+  const handleSignOut = async () => {
+    console.log('user :>> ', user);
+    await actions.signOut({username: user.username});
+    navigation.navigate('Auth');
+  };
   return (
     <View style={[styles.container, generalStyles(mode).background]}>
       <Header />
@@ -23,7 +29,7 @@ const Settings = ({navigation, mode, mma}) => {
           </Text>
           <TouchableRipple
             rippleColor={'#0076b66b'}
-            onPress={() => navigation.navigate('Auth')}
+            onPress={() => handleSignOut()}
             style={[styles.card, styles.logoutCardVariant]}>
             <Fragment>
               <LogoutIcon />
@@ -86,10 +92,17 @@ const Settings = ({navigation, mode, mma}) => {
 
 const mapStateToProps = state => ({
   mode: state.themesReducer.mode,
+  user: state.userReducer,
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({switchTheme, getTheme}, dispatch),
-});
+const mapDispatchToProps = dispatch => {
+  const actions = {
+    switchTheme: () => dispatch(switchTheme),
+    getTheme: () => dispatch(getTheme),
+    signOut: data => dispatch(signOut(data)),
+  };
+
+  return {actions};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);

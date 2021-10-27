@@ -1,9 +1,13 @@
 const {SWITCH_THEME, GET_THEME} = require('@redux/constants/themes');
 
 export const switchTheme = mode => {
-  return {type: SWITCH_THEME, payload: mode};
+  return dispatch => {
+    dispatch({type: SWITCH_THEME, payload: mode});
+  };
 };
 
 export const getTheme = () => {
-  return {type: GET_THEME};
+  return dispatch => {
+    dispatch({type: GET_THEME});
+  };
 };
