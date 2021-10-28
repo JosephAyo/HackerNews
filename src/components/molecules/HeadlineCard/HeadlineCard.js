@@ -10,6 +10,7 @@ import {TouchableRipple} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
 import {fetchAll, fetchOne} from '@redux/actions/newstories';
+import moment from 'moment';
 
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
@@ -66,7 +67,7 @@ const HeadlineCard = ({item, navigation, mode, actions}) => {
             <Text
               style={[generalStyles(mode).normalText, styles.headlineInfoText]}
               le>
-              {!state.isLoading && new Date(state.time).getHours()}
+              {!state.isLoading && moment(state.time * 1000).fromNow()}
             </Text>
           </View>
         </ShimmerPlaceHolder>
