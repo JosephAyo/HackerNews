@@ -1,4 +1,4 @@
-export const PRIMARY = '#0077B6';
+export const PRIMARY = '#B600AF';
 export const SECONDARY = '#DDDDDD';
 
 //LIGHT MODE

@@ -39,7 +39,7 @@ const HeadlineCard = ({item, navigation, mode, actions}) => {
   };
   return (
     <TouchableRipple
-      rippleColor={'#0076b66b'}
+      rippleColor={'#b600b025'}
       onPress={() => readStoryHandler()}
       style={styles.headlineCard}>
       <Fragment>

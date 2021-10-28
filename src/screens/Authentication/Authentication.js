@@ -1,14 +1,29 @@
 import {EyeOffIcon, EyeOnIcon} from '@assets/icons/eyes';
 import Header from '@molecules/Header/Header';
 import {Colors} from '@styles/index';
-import React, {useCallback, useEffect, useState} from 'react';
-import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
-import {TextInput, TouchableRipple} from 'react-native-paper';
+import React, {useEffect, useState} from 'react';
+import {useIsFocused} from '@react-navigation/native';
+
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  BackHandler,
+  Alert,
+} from 'react-native';
+import {
+  Modal,
+  Portal,
+  Provider,
+  TextInput,
+  TouchableRipple,
+} from 'react-native-paper';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
-import {createTable, getDBConnection} from '@database/queries';
 import {signIn, signUp} from '@redux/actions/user';
 import Toast from 'react-native-toast-message';
 
@@ -18,14 +33,29 @@ const defaultInputState = {
   confirmedPassword: '',
 };
 const Authentication = ({navigation, mode, user, actions}) => {
-  const initDatabaseCallback = useCallback(async () => {
-    const db = await getDBConnection();
-    await createTable(db);
-  }, []);
+  const isFocused = useIsFocused();
+
+  const backAction = () => {
+    Alert.alert('Hold on!', 'Are you sure you want to exit?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {text: 'YES', onPress: () => BackHandler.exitApp()},
+    ]);
+    return true;
+  };
 
   useEffect(() => {
-    initDatabaseCallback();
-  }, [initDatabaseCallback]);
+    if (isFocused) {
+      BackHandler.addEventListener('hardwareBackPress', backAction);
+    } else {
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+    }
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+  }, [isFocused]);
 
   useEffect(() => {
     if (user.hasError) {
@@ -38,9 +68,6 @@ const Authentication = ({navigation, mode, user, actions}) => {
   }, [user]);
 
   const [textInputs, setTextInputs] = useState(defaultInputState);
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmedPassword, setConfirmedPassword] = useState('');
   const [activeTab, setActiveTab] = useState('login');
   const [passHidden, setPassHidden] = useState({
     main: true,
@@ -127,131 +154,95 @@ const Authentication = ({navigation, mode, user, actions}) => {
   };
   return (
     <View style={[styles.container, generalStyles(mode).background]}>
-      <Header />
-      <ScrollView
-        style={styles.screenContents}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.section}>
-          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
-            Account
-          </Text>
-        </View>
-        <View style={styles.authTabMenu}>
-          <TouchableRipple
-            rippleColor={'#0076b66b'}
-            onPress={() => handleTabSwitch('login')}
-            style={
-              activeTab === 'login'
-                ? [styles.authTabItem, styles.activeAuthTabItem]
-                : [styles.authTabItem]
-            }>
-            <Text
+      <Provider>
+        <Header />
+        <Portal>
+          <Modal visible={user.isLoading} dismissable={false}>
+            <ActivityIndicator color={Colors.PRIMARY} size={40} />
+          </Modal>
+        </Portal>
+        <ScrollView
+          style={styles.screenContents}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}>
+          <View style={styles.section}>
+            <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+              Account
+            </Text>
+          </View>
+          <View style={styles.authTabMenu}>
+            <TouchableRipple
+              rippleColor={'#b600b025'}
+              onPress={() => handleTabSwitch('login')}
               style={
                 activeTab === 'login'
-                  ? [styles.authTabItemText, styles.activeAuthTabItemText]
-                  : [styles.authTabItemText]
+                  ? [styles.authTabItem, styles.activeAuthTabItem]
+                  : [styles.authTabItem]
               }>
-              LOG IN
-            </Text>
-          </TouchableRipple>
-          <TouchableRipple
-            rippleColor={'#0076b66b'}
-            onPress={() => handleTabSwitch('signup')}
-            style={
-              activeTab === 'signup'
-                ? [styles.authTabItem, styles.activeAuthTabItem]
-                : [styles.authTabItem]
-            }>
-            <Text
+              <Text
+                style={
+                  activeTab === 'login'
+                    ? [styles.authTabItemText, styles.activeAuthTabItemText]
+                    : [styles.authTabItemText]
+                }>
+                LOG IN
+              </Text>
+            </TouchableRipple>
+            <TouchableRipple
+              rippleColor={'#b600b025'}
+              onPress={() => handleTabSwitch('signup')}
               style={
                 activeTab === 'signup'
-                  ? [styles.authTabItemText, styles.activeAuthTabItemText]
-                  : [styles.authTabItemText]
+                  ? [styles.authTabItem, styles.activeAuthTabItem]
+                  : [styles.authTabItem]
               }>
-              SIGN UP
-            </Text>
-          </TouchableRipple>
-        </View>
-        <View style={styles.section}>
-          <TextInput
-            mode="outlined"
-            label="Username"
-            value={textInputs.username}
-            onChangeText={text =>
-              setTextInputs({
-                ...textInputs,
-                username: text,
-              })
-            }
-            outlineColor={Colors.FADED}
-            right={<TextInput.Affix text="/20" />}
-            theme={{
-              colors: {
-                primary: Colors.PRIMARY,
-                underlineColor: Colors.BACKGROUND,
-                text: generalStyles(mode).normalText.color,
-                placeholder: Colors.FADED,
-              },
-            }}
-            style={[styles.textInput, generalStyles(mode).background]}
-          />
-        </View>
-        <View style={[styles.section, styles.textInputContainer]}>
-          <TextInput
-            mode="outlined"
-            label="Password"
-            value={textInputs.password}
-            onChangeText={text =>
-              setTextInputs({
-                ...textInputs,
-                password: text,
-              })
-            }
-            outlineColor={Colors.FADED}
-            secureTextEntry={passHidden.main}
-            theme={{
-              colors: {
-                primary: Colors.PRIMARY,
-                underlineColor: Colors.BACKGROUND,
-                text: generalStyles(mode).normalText.color,
-                placeholder: Colors.FADED,
-              },
-            }}
-            style={[styles.textInput, generalStyles(mode).background]}
-            right={<TextInput.Affix />}
-          />
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={styles.textInputIconContainer}
-            onPress={() =>
-              setPassHidden({...passHidden, main: !passHidden.main})
-            }>
-            {passHidden.main ? <EyeOffIcon /> : <EyeOnIcon />}
-          </TouchableOpacity>
-        </View>
-        {activeTab === 'signup' && (
-          <View style={[styles.section, styles.textInputContainer]}>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              style={styles.textInputIconContainer}
-              onPress={() =>
-                setPassHidden({...passHidden, confirm: !passHidden.confirm})
-              }>
-              {passHidden.confirm ? <EyeOffIcon /> : <EyeOnIcon />}
-            </TouchableOpacity>
+              <Text
+                style={
+                  activeTab === 'signup'
+                    ? [styles.authTabItemText, styles.activeAuthTabItemText]
+                    : [styles.authTabItemText]
+                }>
+                SIGN UP
+              </Text>
+            </TouchableRipple>
+          </View>
+          <View style={styles.section}>
             <TextInput
               mode="outlined"
-              label="Confirm Password"
-              value={textInputs.confirmedPassword}
+              label="Username"
+              value={textInputs.username}
               onChangeText={text =>
                 setTextInputs({
                   ...textInputs,
-                  confirmedPassword: text,
+                  username: text,
                 })
               }
               outlineColor={Colors.FADED}
-              secureTextEntry={passHidden.confirm}
+              right={<TextInput.Affix text="/20" />}
+              theme={{
+                colors: {
+                  primary: Colors.PRIMARY,
+                  underlineColor: Colors.BACKGROUND,
+                  text: generalStyles(mode).normalText.color,
+                  placeholder: Colors.FADED,
+                },
+              }}
+              style={[styles.textInput, generalStyles(mode).background]}
+            />
+          </View>
+          <View style={[styles.section, styles.textInputContainer]}>
+            <TextInput
+              mode="outlined"
+              label="Password"
+              value={textInputs.password}
+              onChangeText={text =>
+                setTextInputs({
+                  ...textInputs,
+                  password: text,
+                })
+              }
+              outlineColor={Colors.FADED}
+              secureTextEntry={passHidden.main}
               theme={{
                 colors: {
                   primary: Colors.PRIMARY,
@@ -263,34 +254,77 @@ const Authentication = ({navigation, mode, user, actions}) => {
               style={[styles.textInput, generalStyles(mode).background]}
               right={<TextInput.Affix />}
             />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={styles.textInputIconContainer}
+              onPress={() =>
+                setPassHidden({...passHidden, main: !passHidden.main})
+              }>
+              {passHidden.main ? <EyeOffIcon /> : <EyeOnIcon />}
+            </TouchableOpacity>
           </View>
-        )}
-        <View style={styles.section}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.authButton}
-            onPress={() => handleSubmit()}>
-            <Text style={styles.authButtonText}>
-              {activeTab === 'login' ? 'Log In' : 'Sign Up'}
+          {activeTab === 'signup' && (
+            <View style={[styles.section, styles.textInputContainer]}>
+              <TouchableOpacity
+                activeOpacity={0.6}
+                style={styles.textInputIconContainer}
+                onPress={() =>
+                  setPassHidden({...passHidden, confirm: !passHidden.confirm})
+                }>
+                {passHidden.confirm ? <EyeOffIcon /> : <EyeOnIcon />}
+              </TouchableOpacity>
+              <TextInput
+                mode="outlined"
+                label="Confirm Password"
+                value={textInputs.confirmedPassword}
+                onChangeText={text =>
+                  setTextInputs({
+                    ...textInputs,
+                    confirmedPassword: text,
+                  })
+                }
+                outlineColor={Colors.FADED}
+                secureTextEntry={passHidden.confirm}
+                theme={{
+                  colors: {
+                    primary: Colors.PRIMARY,
+                    underlineColor: Colors.BACKGROUND,
+                    text: generalStyles(mode).normalText.color,
+                    placeholder: Colors.FADED,
+                  },
+                }}
+                style={[styles.textInput, generalStyles(mode).background]}
+                right={<TextInput.Affix />}
+              />
+            </View>
+          )}
+          <View style={styles.section}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.authButton}
+              onPress={() => handleSubmit()}>
+              <Text style={styles.authButtonText}>
+                {activeTab === 'login' ? 'Log In' : 'Sign Up'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={[styles.section, styles.otherOptions]}>
+            <Text
+              style={[generalStyles(mode).normalText, styles.otherOptionsText]}>
+              {activeTab === 'login'
+                ? "Don't have an account? "
+                : 'Already registered? '}
             </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={[styles.section, styles.otherOptions]}>
-          <Text
-            style={[generalStyles(mode).normalText, styles.otherOptionsText]}>
-            {activeTab === 'login'
-              ? "Don't have an account? "
-              : 'Already registered? '}
-          </Text>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => handleTabLinkPress()}>
-            <Text style={[styles.otherOptionsText, styles.tabLinkText]}>
-              {activeTab === 'login' ? 'Sign Up' : 'Log In'}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => handleTabLinkPress()}>
+              <Text style={[styles.otherOptionsText, styles.tabLinkText]}>
+                {activeTab === 'login' ? 'Sign Up' : 'Log In'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </Provider>
     </View>
   );
 };

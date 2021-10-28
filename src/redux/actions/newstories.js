@@ -29,7 +29,6 @@ export const fetchAll = () => {
       });
       return true;
     } catch (error) {
-      console.log('error fetch all :>> ', error);
       dispatch({
         type: FETCH_FAILED,
         payload: {message: error.message ? error.message : error},
@@ -55,7 +54,6 @@ export const fetchOne = data => {
       });
       return oneStory;
     } catch (error) {
-      console.log('error fetch one:>> ', error.message);
       dispatch({
         type: FETCH_FAILED,
         payload: {message: error.message ? error.message : error},
@@ -83,7 +81,6 @@ export const fetchMore = data => {
       });
       return true;
     } catch (error) {
-      console.log('error fetch more:>> ', error);
       dispatch({
         type: FETCH_FAILED,
         payload: {message: error.message ? error.message : error},

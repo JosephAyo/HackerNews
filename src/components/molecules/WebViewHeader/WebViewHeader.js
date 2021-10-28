@@ -6,7 +6,7 @@ import {View, Text, TouchableOpacity, Linking} from 'react-native';
 import {ProgressBar, Menu, Portal, Modal} from 'react-native-paper';
 import Clipboard from '@react-native-clipboard/clipboard';
 import styles from './style';
-import generalStyles from '@styles/generalStyles';
+import Toast from 'react-native-toast-message';
 
 const WebViewHeader = ({
   isLoading,
@@ -31,7 +31,12 @@ const WebViewHeader = ({
   };
 
   const copyLinkHandler = () => {
+    setState({...state, menuVisible: false});
     Clipboard.setString(url);
+    Toast.show({
+      type: 'success',
+      text1: 'Link copied',
+    });
   };
 
   return (
@@ -47,11 +52,15 @@ const WebViewHeader = ({
             {progress >= 0.9 ? title : 'Loading...'}
           </Text>
         </View>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => setState({...state, menuVisible: !state.menuVisible})}>
-          <VerticalEllipsisIcon />
-        </TouchableOpacity>
+        {progress >= 0.9 && (
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() =>
+              setState({...state, menuVisible: !state.menuVisible})
+            }>
+            <VerticalEllipsisIcon />
+          </TouchableOpacity>
+        )}
 
         <Portal>
           <Modal

@@ -16,6 +16,7 @@ import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
 import About from '@screens/About/About';
 import NewsStory from '@screens/NewsStory/NewsStory';
+import StartUp from '@screens/StartUp/StartUp';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -74,6 +75,7 @@ function MainAppStack({mode}) {
         headerShown: false,
         animation: 'slide_from_right',
       }}>
+      <Stack.Screen name="Startup" component={StartUp} />
       <Stack.Screen name="Auth" component={Authentication} />
       <Stack.Screen name="HackerNews">
         {props => <MyTabs {...props} mode={mode} />}

@@ -7,12 +7,6 @@ import WebViewHeader from '@molecules/WebViewHeader/WebViewHeader';
 import {ActivityIndicator, Provider} from 'react-native-paper';
 import {Colors} from '@styles/index';
 
-// import Header from '../../components/molecules/Header/Header';
-// import Loading from '../../components/atoms/Loading/Loading';
-// import ErrorToast from '../../components/atoms/Toasts/ErrorToast';
-
-// import {showToast} from '../../helpers/toast';
-
 const NewsStory = ({route, navigation}) => {
   const [state, setState] = useState({
     title: '',
@@ -20,11 +14,6 @@ const NewsStory = ({route, navigation}) => {
     url: '',
   });
   const webViewRef = useRef(null);
-  // const errorToastRef = useRef(null);
-  // const errorHandler = event => {
-  //   const {nativeEvent} = event;
-  //   showToast(errorToastRef, nativeEvent.description);
-  // };
 
   const loadProgressHandler = ({nativeEvent}) => {
     setState({
@@ -34,7 +23,6 @@ const NewsStory = ({route, navigation}) => {
       url: nativeEvent.url,
     });
   };
-  console.log('mdde :>> ', route.params.mode);
   return (
     <View style={[styles.container]}>
       <Provider>
@@ -48,10 +36,7 @@ const NewsStory = ({route, navigation}) => {
         <View style={[styles.top_content]}>
           <WebView
             ref={ref => (webViewRef.current = ref)}
-            style={[
-              styles.main_article_webview,
-              // generalStyles(route.params.mode).background,
-            ]}
+            style={[styles.main_article_webview]}
             originWhitelist={['*']}
             source={{
               uri: route.params.url,
@@ -60,9 +45,7 @@ const NewsStory = ({route, navigation}) => {
             onLoadProgress={e => {
               loadProgressHandler(e);
             }}
-            // onError={event => errorHandler(event)}
           />
-          {/* <ErrorToast setRef={toast => (errorToastRef.current = toast)} /> */}
           {state.progress < 0.5 && (
             <View
               style={[

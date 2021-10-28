@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginVertical: 20,
     paddingVertical: 10,
     paddingHorizontal: 6,
@@ -54,8 +55,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   profileCardContent: {
-    marginVertical: 8,
-    width: 215,
+    marginHorizontal: 8,
+    flex: 2,
   },
   cardContentParagraph: {
     fontFamily: Fonts.BOZON_REGULAR,

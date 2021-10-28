@@ -11,7 +11,6 @@ const rootReducer = combineReducers({
 });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-export let storeRef = store;
 const configureStore = () => {
   return store;
 };

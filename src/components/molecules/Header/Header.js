@@ -25,7 +25,6 @@ const Header = ({mode, actions}) => {
         style={styles.theme}
         activeOpacity={0.6}
         onPress={() => themeToggleHandler()}>
-        {/* <ThemeIcon /> */}
         {mode === 'light' ? <LightModeToggleIcon /> : <DarkModeToggleIcon />}
       </TouchableOpacity>
     </View>

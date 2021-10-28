@@ -1,18 +1,29 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import Header from '@molecules/Header/Header';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  RefreshControl,
+  BackHandler,
+  Alert,
+} from 'react-native';
 import styles from './style';
 import generalStyles from '@styles/generalStyles';
 import HeadlineCard from '@molecules/HeadlineCard/HeadlineCard';
-import topstories from '@assets/dummy_data/topstories.json';
 import {connect} from 'react-redux';
 import {getTheme, switchTheme} from '@redux/actions/themes';
 import {fetchAll, fetchMore} from '@redux/actions/newstories';
+import {Modal, Portal, Provider} from 'react-native-paper';
 import {Colors} from '@styles/index';
 import Toast from 'react-native-toast-message';
+import EmptyFeed from '@molecules/EmptyFeed/EmptyFeed';
 
-const Feed = ({navigation, mode, newstories, actions}) => {
-  const [state, setState] = useState(topstories);
+const Feed = ({navigation, mode, newstories, user, actions}) => {
+  const isFocused = useIsFocused();
+
   const initFetchCallback = useCallback(async () => {
     await actions.fetchAll();
   }, [actions]);
@@ -30,33 +41,56 @@ const Feed = ({navigation, mode, newstories, actions}) => {
       });
     }
   }, [newstories]);
+
+  const backAction = () => {
+    Alert.alert('Hold on!', 'Are you sure you want to exit?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {text: 'YES', onPress: () => BackHandler.exitApp()},
+    ]);
+    return true;
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      BackHandler.addEventListener('hardwareBackPress', backAction);
+    } else {
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+    }
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+  }, [isFocused]);
+
   const renderItem = ({item}) => (
-    <HeadlineCard
-      // title={item.title}
-      // by={item.by}
-      // time={item.time}
-      // url={item.url}
-      navigation={navigation}
-      item={item}
-      // mode={mode}
-    />
+    <HeadlineCard navigation={navigation} item={item} />
   );
 
   const endReachedHandler = async () => {
-    console.log('hit');
     const {allStories, currentCount} = newstories;
     await actions.fetchMore({allStories, currentCount});
   };
+
+  const refreshHandler = async () => {
+    await actions.fetchAll();
+  };
   return (
     <View style={[styles.container, generalStyles(mode).background]}>
-      <Header />
-      <View style={styles.screenContents}>
-        <View style={styles.section}>
-          <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
-            Headlines
-          </Text>
-        </View>
-        {newstories.allStories.length > 0 ? (
+      <Provider>
+        <Header />
+        <Portal>
+          <Modal visible={newstories.isLoading} dismissable={false}>
+            <ActivityIndicator color={Colors.PRIMARY} size={40} />
+          </Modal>
+        </Portal>
+        <View style={styles.screenContents}>
+          <View style={styles.section}>
+            <Text style={[generalStyles(mode).normalText, styles.sectionTitle]}>
+              Headlines
+            </Text>
+          </View>
           <FlatList
             data={newstories.loadedStories}
             renderItem={renderItem}
@@ -66,11 +100,19 @@ const Feed = ({navigation, mode, newstories, actions}) => {
             onEndReachedThreshold={0.1}
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
+            ListEmptyComponent={
+              <EmptyFeed mode={mode} reloadFeed={() => refreshHandler()} />
+            }
+            refreshing={newstories.isLoading}
+            refreshControl={
+              <RefreshControl
+                refreshing={newstories.isLoading}
+                onRefresh={() => refreshHandler()}
+              />
+            }
           />
-        ) : (
-          <ActivityIndicator color={Colors.PRIMARY} size={50} />
-        )}
-      </View>
+        </View>
+      </Provider>
     </View>
   );
 };
@@ -78,6 +120,7 @@ const Feed = ({navigation, mode, newstories, actions}) => {
 const mapStateToProps = state => ({
   mode: state.themesReducer.mode,
   newstories: state.newstoriesReducer,
+  user: state.userReducer,
 });
 const mapDispatchToProps = dispatch => {
   const actions = {

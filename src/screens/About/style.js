@@ -47,11 +47,22 @@ const styles = StyleSheet.create({
   },
   sectionParagraphContainer: {
     marginTop: 10,
+    width: Dimensions.WIDTH * 0.88,
   },
+  roleText: {fontSize: 16},
   sectionParagraphText: {
     fontSize: 14,
     fontFamily: Fonts.BOZON_REGULAR,
   },
+  socialsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: 230,
+  },
+  emailSocialContainer: {display: 'flex', flexDirection: 'row'},
+  projectLink: {color: 'blue', textAlign: 'right'},
 });
 
 export default styles;

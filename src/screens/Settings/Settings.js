@@ -12,8 +12,7 @@ import {signOut} from '@redux/actions/user';
 
 const Settings = ({navigation, mode, user, actions}) => {
   const handleSignOut = async () => {
-    console.log('user :>> ', user);
-    await actions.signOut({username: user.username});
+    await actions.signOut();
     navigation.navigate('Auth');
   };
   return (
@@ -28,7 +27,7 @@ const Settings = ({navigation, mode, user, actions}) => {
             Account
           </Text>
           <TouchableRipple
-            rippleColor={'#0076b66b'}
+            rippleColor={'#b600b025'}
             onPress={() => handleSignOut()}
             style={[styles.card, styles.logoutCardVariant]}>
             <Fragment>
@@ -45,7 +44,7 @@ const Settings = ({navigation, mode, user, actions}) => {
             Developer Info
           </Text>
           <TouchableRipple
-            rippleColor={'#0076b66b'}
+            rippleColor={'#b600b025'}
             onPress={() => navigation.navigate('About')}
             style={[styles.card]}>
             <Fragment>
